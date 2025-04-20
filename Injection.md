@@ -1,8 +1,7 @@
 # Run the injection machine
-'''
+```
  sudo bash auto_deploy.sh injection.tar
-'''
-
+```
  sudo bash auto_deploy.sh injection.tar
 [sudo] password for kali: 
 
