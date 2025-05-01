@@ -64,5 +64,6 @@ you can see we might have got the usernmae and since the ssh is open we can try 
 
 ![Screenshot from 2025-05-01 18-00-10](https://github.com/user-attachments/assets/59b4dd4d-02a0-47c9-8f0c-124f2816be6b)
 
+![Screenshot from 2025-05-01 18-08-21](https://github.com/user-attachments/assets/d6480558-ac19-463e-a7e6-c0242216a68b)
 
 
