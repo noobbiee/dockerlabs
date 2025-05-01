@@ -3,6 +3,7 @@
 ![run_machine](https://github.com/user-attachments/assets/9282a3ea-8655-4e12-9522-e71585b95c99)
 
 # open_ports
+Lets look for all the open ports on the target
 
 ![openports](https://github.com/user-attachments/assets/95eb2a8a-4c22-4833-91a3-c8fadfc7d8f1)
 
@@ -13,6 +14,7 @@
 ![script_version](https://github.com/user-attachments/assets/dabc4bfe-1498-4979-90db-968e097d07a2)
 
 # script_vulnerability
+Lets try to see if there are any vulnerabilities that can be exploited by the script in the nmap
 
 ![Screenshot from 2025-05-01 15-59-51](https://github.com/user-attachments/assets/99bf512f-befa-4ad0-8abe-a106d8deac0c)
 
