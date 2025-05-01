@@ -52,3 +52,17 @@ you can see we might have got the usernmae and since the ssh is open we can try 
 
 ![Screenshot from 2025-05-01 17-22-39](https://github.com/user-attachments/assets/232f4a53-cbf5-4a89-911c-3226a4d9dce7)
 
+# log in with ssh 
+
+![Screenshot from 2025-05-01 17-56-11](https://github.com/user-attachments/assets/afa4101a-25df-4a83-95f5-2118b85d08f2)
+
+# Privilege escalation
+
+![Screenshot from 2025-05-01 17-57-53](https://github.com/user-attachments/assets/651cf412-834c-468a-af7c-3b92f9be0a55)
+
+![Screenshot from 2025-05-01 17-55-09](https://github.com/user-attachments/assets/9838b2f0-9ae6-4453-b933-739ab1f0f720)
+
+![Screenshot from 2025-05-01 18-00-10](https://github.com/user-attachments/assets/59b4dd4d-02a0-47c9-8f0c-124f2816be6b)
+
+
+
