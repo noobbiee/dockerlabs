@@ -48,4 +48,7 @@ lets check the file we got
 
 you can see we might have got the usernmae and since the ssh is open we can try to bruteforce our way in
 
+# lets try to bruteforce attack with hydra using the wordlist from seclist 
+
+![Screenshot from 2025-05-01 17-22-39](https://github.com/user-attachments/assets/232f4a53-cbf5-4a89-911c-3226a4d9dce7)
 
