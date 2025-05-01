@@ -30,10 +30,22 @@
 
 ![Screenshot from 2025-05-01 16-07-17](https://github.com/user-attachments/assets/0aa9fb69-65be-4e06-b704-6f37e9845a50)
 
+# because of some technical issues we had to restart the machine and the ip address for the machine have changed
+to 172.19.0.2
 
+![Screenshot from 2025-05-01 16-24-54](https://github.com/user-attachments/assets/8fe09518-ee0b-4836-922a-2b2d890033cc)
 
+![Screenshot from 2025-05-01 16-26-33](https://github.com/user-attachments/assets/dc8dc314-613f-495f-8509-4d3ffd2c44c3)
 
+# lets try to brute force the directories
+we will use wordlist from the seclists
 
+![Screenshot from 2025-05-01 16-38-55](https://github.com/user-attachments/assets/9b59b9a7-c5d6-4022-8231-af15ffb461b8)
 
+lets check the file we got
+
+![Screenshot from 2025-05-01 16-39-59](https://github.com/user-attachments/assets/661dadde-5cea-409c-b747-4a2b90e3757a)
+
+you can see we might have got the usernmae and since the ssh is open we can try to bruteforce our way in
 
 
