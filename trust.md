@@ -2,14 +2,6 @@
 
 ![run_machine](https://github.com/user-attachments/assets/9282a3ea-8655-4e12-9522-e71585b95c99)
 
-# tools used 
-nmap
-whatweb
-searchsploit
-gobuster
-hydra
-
-
 # open_ports
 Lets look for all the open ports on the target
 
